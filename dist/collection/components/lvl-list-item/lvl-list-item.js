@@ -1,4 +1,5 @@
 import { h } from "@stencil/core";
+import { ClickEvent } from "../click-event/clickEvent";
 export class LvlListItem {
     render() {
         this.user = {
@@ -17,8 +18,7 @@ export class LvlListItem {
             online: true,
             text: 'You are doing great!'
         };
-        console.log(this.user);
-        return h("div", { class: "list-item" },
+        return h("div", { class: "list-item", onClick: () => this.onClick.emit(new ClickEvent(this.user.id, 'LISTITEM')) },
             h("lvl-avatar", { class: "item-avatar", user: this.user }),
             h("div", { class: "item-center" },
                 h("h1", { class: "item-title" }, this.getTitle()),
@@ -75,4 +75,25 @@ export class LvlListItem {
             "reflect": false
         }
     }; }
+    static get events() { return [{
+            "method": "onClick",
+            "name": "onClick",
+            "bubbles": true,
+            "cancelable": true,
+            "composed": true,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "complexType": {
+                "original": "ClickEvent",
+                "resolved": "ClickEvent",
+                "references": {
+                    "ClickEvent": {
+                        "location": "import",
+                        "path": "../click-event/clickEvent"
+                    }
+                }
+            }
+        }]; }
 }

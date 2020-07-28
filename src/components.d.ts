@@ -7,7 +7,9 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  ClickEvent,
+} from './components/click-event/clickEvent';
 
 export namespace Components {
   interface AvatarComponent {
@@ -73,13 +75,16 @@ declare namespace LocalJSX {
     'topRight'?: string;
   }
   interface LvlAvatar {
+    'onOnClick'?: (event: CustomEvent<ClickEvent>) => void;
     'user'?: any;
   }
   interface LvlListItem {
+    'onOnClick'?: (event: CustomEvent<ClickEvent>) => void;
     'user'?: any;
   }
   interface LvlMention {
     'mention'?: any;
+    'onOnClick'?: (event: CustomEvent<ClickEvent>) => void;
   }
 
   interface IntrinsicElements {

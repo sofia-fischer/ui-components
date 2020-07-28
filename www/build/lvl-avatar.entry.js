@@ -1,16 +1,18 @@
-import { r as registerInstance, h } from './core-0c0d2802.js';
+import { r as registerInstance, c as createEvent, h, d as getAssetPath } from './core-3a9857db.js';
+import { C as ClickEvent } from './clickEvent-f7110283.js';
 
 const LvlAvatar = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
+        this.onClick = createEvent(this, "onClick", 7);
     }
     render() {
         console.log(this.user);
-        return h("avatar-component", { avatar: this.getAvatar(), bottomRight: this.getIcon(), topLeft: this.getGuidance(), online: this.getOnline() });
+        return h("avatar-component", { avatar: this.getAvatar(), bottomRight: this.getIcon(), topLeft: this.getGuidance(), online: this.getOnline(), onClick: () => this.onClick.emit(new ClickEvent(this.user.id, 'AVATAR')) });
     }
     getAvatar() {
         if (!this.user) {
-            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+            return getAssetPath('assets/profiles.png');
         }
         const possibleAttributes = [
             'avatarImageURLThumb',
@@ -21,7 +23,7 @@ const LvlAvatar = class {
         ];
         possibleAttributes.find(attribute => !!this.user[attribute]);
         if (possibleAttributes) {
-            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+            return getAssetPath('assets/profiles.png');
         }
         return 'Deleted User';
     }
@@ -37,7 +39,7 @@ const LvlAvatar = class {
     }
     getIcon() {
         if (!this.user) {
-            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+            return getAssetPath('assets/profiles.png');
         }
         const possibleAttributes = [
             'iconUrl',

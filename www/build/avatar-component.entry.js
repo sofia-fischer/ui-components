@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './core-0c0d2802.js';
+import { r as registerInstance, h } from './core-3a9857db.js';
 
 const AvatarComponent = class {
     constructor(hostRef) {

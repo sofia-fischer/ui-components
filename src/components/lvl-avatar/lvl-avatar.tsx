@@ -1,4 +1,5 @@
-import {Component, h, Prop} from '@stencil/core';
+import {Component, Event, EventEmitter, getAssetPath, h, Prop} from '@stencil/core';
+import {ClickEvent} from "../click-event/clickEvent";
 
 @Component({
     tag: 'lvl-avatar',
@@ -8,6 +9,7 @@ import {Component, h, Prop} from '@stencil/core';
 export class LvlAvatar
 {
     @Prop() user: any
+    @Event() onClick: EventEmitter<ClickEvent>
 
     render()
     {
@@ -17,15 +19,16 @@ export class LvlAvatar
             bottomRight={this.getIcon()}
             topLeft={this.getGuidance()}
             online={this.getOnline()}
+            onClick={() => this.onClick.emit(new ClickEvent(this.user.id, 'AVATAR'))}
         ></avatar-component>;
     }
 
     private getAvatar()
     {
         if (!this.user) {
-            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png'
+            return getAssetPath('assets/profiles.png')
         }
-        
+
         const possibleAttributes =
             [
                 'avatarImageURLThumb',
@@ -38,7 +41,7 @@ export class LvlAvatar
         possibleAttributes.find(attribute => !!this.user[attribute])
 
         if (possibleAttributes) {
-            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png'
+            return getAssetPath('assets/profiles.png')
         }
 
         return 'Deleted User'
@@ -61,7 +64,7 @@ export class LvlAvatar
     private getIcon()
     {
         if (!this.user) {
-            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png'
+            return getAssetPath('assets/profiles.png')
         }
 
         const possibleAttributes =

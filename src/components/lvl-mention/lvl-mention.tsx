@@ -1,4 +1,5 @@
-import {Component, getAssetPath, h, Prop} from '@stencil/core'
+import {Component, Event, EventEmitter, getAssetPath, h, Prop} from '@stencil/core'
+import {ClickEvent} from "../click-event/clickEvent";
 
 @Component({
     tag: 'lvl-mention',
@@ -10,6 +11,7 @@ import {Component, getAssetPath, h, Prop} from '@stencil/core'
 export class LvlMention
 {
     @Prop() mention: any
+    @Event() onClick: EventEmitter<ClickEvent>
 
     render()
     {
@@ -28,9 +30,9 @@ export class LvlMention
             uuid: "2991f4f0-baee-11ea-abf8-8da229846497",
         }
 
-        return <span class="mention" style={{
-            'background': 'linear-gradient(123deg, ' + this.mention.backgroundColorGradientStart + ', ' + this.mention.backgroundColorGradientEnd + ')',
-        }}>
+        return <span class="mention"
+                     style={{'background': 'linear-gradient(123deg, ' + this.mention.backgroundColorGradientStart + ', ' + this.mention.backgroundColorGradientEnd + ')',}}
+                     onClick={() => this.onClick.emit(new ClickEvent(this.mention.id, 'MENTION'))}>
             
             <img class="icon"
                  src={this.getPreixIconUrl()}/>

@@ -1,4 +1,5 @@
-import {Component, h, Prop} from '@stencil/core';
+import {Component, Event, EventEmitter, h, Prop} from '@stencil/core';
+import {ClickEvent} from "../click-event/clickEvent";
 
 @Component({
     tag: 'lvl-list-item',
@@ -8,6 +9,7 @@ import {Component, h, Prop} from '@stencil/core';
 export class LvlListItem
 {
     @Prop() user: any
+    @Event() onClick: EventEmitter<ClickEvent>
 
     render()
     {
@@ -28,8 +30,8 @@ export class LvlListItem
             text: 'You are doing great!'
         }
 
-        console.log(this.user)
-        return <div class="list-item">
+        return <div class="list-item"
+                    onClick={() => this.onClick.emit(new ClickEvent(this.user.id, 'LISTITEM'))}>
             <lvl-avatar class="item-avatar" user={this.user}></lvl-avatar>
             <div class="item-center">
                 <h1 class="item-title">{this.getTitle()}</h1>

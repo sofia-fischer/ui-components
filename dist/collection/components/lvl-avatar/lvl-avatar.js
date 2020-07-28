@@ -1,12 +1,13 @@
-import { h } from "@stencil/core";
+import { getAssetPath, h } from "@stencil/core";
+import { ClickEvent } from "../click-event/clickEvent";
 export class LvlAvatar {
     render() {
         console.log(this.user);
-        return h("avatar-component", { avatar: this.getAvatar(), bottomRight: this.getIcon(), topLeft: this.getGuidance(), online: this.getOnline() });
+        return h("avatar-component", { avatar: this.getAvatar(), bottomRight: this.getIcon(), topLeft: this.getGuidance(), online: this.getOnline(), onClick: () => this.onClick.emit(new ClickEvent(this.user.id, 'AVATAR')) });
     }
     getAvatar() {
         if (!this.user) {
-            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+            return getAssetPath('assets/profiles.png');
         }
         const possibleAttributes = [
             'avatarImageURLThumb',
@@ -17,7 +18,7 @@ export class LvlAvatar {
         ];
         possibleAttributes.find(attribute => !!this.user[attribute]);
         if (possibleAttributes) {
-            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+            return getAssetPath('assets/profiles.png');
         }
         return 'Deleted User';
     }
@@ -33,7 +34,7 @@ export class LvlAvatar {
     }
     getIcon() {
         if (!this.user) {
-            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+            return getAssetPath('assets/profiles.png');
         }
         const possibleAttributes = [
             'iconUrl',
@@ -75,4 +76,25 @@ export class LvlAvatar {
             "reflect": false
         }
     }; }
+    static get events() { return [{
+            "method": "onClick",
+            "name": "onClick",
+            "bubbles": true,
+            "cancelable": true,
+            "composed": true,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "complexType": {
+                "original": "ClickEvent",
+                "resolved": "ClickEvent",
+                "references": {
+                    "ClickEvent": {
+                        "location": "import",
+                        "path": "../click-event/clickEvent"
+                    }
+                }
+            }
+        }]; }
 }

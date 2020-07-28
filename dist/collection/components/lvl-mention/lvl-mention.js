@@ -1,4 +1,5 @@
 import { getAssetPath, h } from "@stencil/core";
+import { ClickEvent } from "../click-event/clickEvent";
 export class LvlMention {
     render() {
         this.mention = {
@@ -15,9 +16,7 @@ export class LvlMention {
             suffixIcon: "guag",
             uuid: "2991f4f0-baee-11ea-abf8-8da229846497",
         };
-        return h("span", { class: "mention", style: {
-                'background': 'linear-gradient(123deg, ' + this.mention.backgroundColorGradientStart + ', ' + this.mention.backgroundColorGradientEnd + ')',
-            } },
+        return h("span", { class: "mention", style: { 'background': 'linear-gradient(123deg, ' + this.mention.backgroundColorGradientStart + ', ' + this.mention.backgroundColorGradientEnd + ')', }, onClick: () => this.onClick.emit(new ClickEvent(this.mention.id, 'MENTION')) },
             h("img", { class: "icon", src: this.getPreixIconUrl() }),
             h("img", { class: "icon", src: this.mention.iconURL }),
             h("a", { class: "text", style: { 'color': this.mention.textColor, } }, this.mention.replaceWith),
@@ -78,4 +77,25 @@ export class LvlMention {
             "reflect": false
         }
     }; }
+    static get events() { return [{
+            "method": "onClick",
+            "name": "onClick",
+            "bubbles": true,
+            "cancelable": true,
+            "composed": true,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "complexType": {
+                "original": "ClickEvent",
+                "resolved": "ClickEvent",
+                "references": {
+                    "ClickEvent": {
+                        "location": "import",
+                        "path": "../click-event/clickEvent"
+                    }
+                }
+            }
+        }]; }
 }

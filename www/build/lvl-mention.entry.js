@@ -1,8 +1,10 @@
-import { r as registerInstance, h, c as getAssetPath } from './core-0c0d2802.js';
+import { r as registerInstance, c as createEvent, h, d as getAssetPath } from './core-3a9857db.js';
+import { C as ClickEvent } from './clickEvent-f7110283.js';
 
 const LvlMention = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
+        this.onClick = createEvent(this, "onClick", 7);
     }
     render() {
         this.mention = {
@@ -19,9 +21,7 @@ const LvlMention = class {
             suffixIcon: "guag",
             uuid: "2991f4f0-baee-11ea-abf8-8da229846497",
         };
-        return h("span", { class: "mention", style: {
-                'background': 'linear-gradient(123deg, ' + this.mention.backgroundColorGradientStart + ', ' + this.mention.backgroundColorGradientEnd + ')',
-            } }, h("img", { class: "icon", src: this.getPreixIconUrl() }), h("img", { class: "icon", src: this.mention.iconURL }), h("a", { class: "text", style: { 'color': this.mention.textColor, } }, this.mention.replaceWith), h("img", { class: "icon", src: this.getSuffixIconUrl() }));
+        return h("span", { class: "mention", style: { 'background': 'linear-gradient(123deg, ' + this.mention.backgroundColorGradientStart + ', ' + this.mention.backgroundColorGradientEnd + ')', }, onClick: () => this.onClick.emit(new ClickEvent(this.mention.id, 'MENTION')) }, h("img", { class: "icon", src: this.getPreixIconUrl() }), h("img", { class: "icon", src: this.mention.iconURL }), h("a", { class: "text", style: { 'color': this.mention.textColor, } }, this.mention.replaceWith), h("img", { class: "icon", src: this.getSuffixIconUrl() }));
     }
     getSuffixIconUrl() {
         if (this.mention.suffixIconURL) {

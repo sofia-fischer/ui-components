@@ -1,8 +1,10 @@
-import { r as registerInstance, h } from './core-0c0d2802.js';
+import { r as registerInstance, c as createEvent, h } from './core-3a9857db.js';
+import { C as ClickEvent } from './clickEvent-f7110283.js';
 
 const LvlListItem = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
+        this.onClick = createEvent(this, "onClick", 7);
     }
     render() {
         this.user = {
@@ -21,8 +23,7 @@ const LvlListItem = class {
             online: true,
             text: 'You are doing great!'
         };
-        console.log(this.user);
-        return h("div", { class: "list-item" }, h("lvl-avatar", { class: "item-avatar", user: this.user }), h("div", { class: "item-center" }, h("h1", { class: "item-title" }, this.getTitle()), h("h6", { class: "item-text" }, this.getText())));
+        return h("div", { class: "list-item", onClick: () => this.onClick.emit(new ClickEvent(this.user.id, 'LISTITEM')) }, h("lvl-avatar", { class: "item-avatar", user: this.user }), h("div", { class: "item-center" }, h("h1", { class: "item-title" }, this.getTitle()), h("h6", { class: "item-text" }, this.getText())));
     }
     getTitle() {
         if (!!this.user || this.user.deleted_at) {
