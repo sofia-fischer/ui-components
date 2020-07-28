@@ -1,0 +1,11 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from "@stencil/core";
+export const MyComponent = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    render() {
+        return h("div", { class: "avatar-container" }, h("img", { class: "avatar", src: "https://lh3.googleusercontent.com/proxy/M4O_ln7pLSZ1r_B2y4CXVijmsY1o8VkJe32lISYa0hyO3tP5KHcrVsfYzDWFtKuW6A-D_tabe4J-gSO_HrIuZLqTXuHzhoSbIHImMy38Liabf41j94SZ-korh_giG3fnnMo18xm4NsxWmXMuKZbdRxY9y6CcSyCcnDhDz7J0I372pVa-0JgBTtejAKeMMtXyJgHOoA" }), h("img", { class: "icon top left", src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-185/12-avatar.128x.png" }), h("img", { class: "icon top right", src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-185/12-avatar.128x.png" }), h("img", { class: "icon bottom left", src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-185/12-avatar.128x.png" }), h("img", { class: "icon bottom right", src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-185/12-avatar.128x.png" }));
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:my-component"; }
+};

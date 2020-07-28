@@ -1,0 +1,71 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from "@stencil/core";
+export const LvlAvatar = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    render() {
+        this.user = {
+            avatarIconURL: "https://cdn.dev.levels.one/resources/graphics/levels/small/METHUSALEM.180425T0000.png",
+            avatarImageURL: "https://cdn.dev.levels.one/resources/graphics/locations/types/avatars/restaurant.180425T0000.png",
+            followersCount: 1,
+            headline: "Locations",
+            id: 17004,
+            linkedID: 7105,
+            name: "Sofia Restaurant Toronto",
+            nickname: "#SofiaRestaurantToronto",
+            object: "SearchResultResource",
+            object_mode: "NEW_RESOURCE",
+            type: "LOCATION",
+            uuid: "b8e6ce20-3679-11ea-94ec-0d977511155a",
+            online: true,
+        };
+        console.log(this.user);
+        return h("avatar-component", { avatar: this.getAvatar(), bottomRight: this.getIcon(), topLeft: this.getGuidance(), online: this.getOnline() });
+    }
+    getAvatar() {
+        if (!this.user)
+            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+        if (this.user.avatarImageUrl)
+            return this.user.avatarImageUrl;
+        if (this.user.avatarImageURL)
+            return this.user.avatarImageURL;
+        if (this.user.avatarImageURLThumb)
+            return this.user.avatarImageURLThumb;
+        if (this.user.avatarImageUrlThumb)
+            return this.user.avatarImageUrlThumb;
+        if (this.user.profileImageUrl)
+            return this.user.profileImageUrl;
+        if (this.user.imageUrl)
+            return this.user.imageUrl;
+        if (this.user.avatarUrl)
+            return this.user.avatarUrl;
+        return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+    }
+    getOnline() {
+        if (!this.user)
+            return false;
+        return !!this.user.online;
+    }
+    getGuidance() {
+        if (!this.user)
+            return false;
+        return this.user.icon;
+    }
+    getIcon() {
+        if (!this.user)
+            return null;
+        if (this.user.iconUrl)
+            return this.user.iconUrl;
+        if (this.user.avatarIconURL)
+            return this.user.iconUrl;
+        if (this.user.profileIconUrl)
+            return this.user.profileIconUrl;
+        if (this.user.profileBadgeImageUrl)
+            return this.user.profileBadgeImageUrl;
+        if (this.user.profileBadgeUrl)
+            return this.user.profileBadgeUrl;
+        return null;
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:lvl-avatar"; }
+};

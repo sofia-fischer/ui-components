@@ -1,0 +1,15 @@
+{
+  "entries": [
+    "components/lvl-mention/lvl-mention.js",
+    "components/lvl-list-item/lvl-list-item.js",
+    "components/lvl-avatar/lvl-avatar.js",
+    "components/avatar-component/avatar-component.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "1.8.8",
+    "typescriptVersion": "3.7.5"
+  },
+  "collections": [],
+  "bundles": []
+}

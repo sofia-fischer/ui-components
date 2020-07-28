@@ -1,0 +1,46 @@
+
+.avatar {
+    position:absolute;
+    height:100%; /* = 100% - 2*5% padding */
+    width:100%; /* = 100% - 2*5% padding */
+    border-radius: 50%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+
+.avatar-container {
+    float:left;
+    position: relative;
+    width: 100%;
+    padding-bottom : 100%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    overflow:hidden;
+}
+
+.icon {
+    width: 25%;
+    height: 25%;
+    position: absolute;
+}
+
+.top {
+    top: 0px;;
+}
+
+.bottom {
+    bottom: 0px;
+}
+
+.left {
+    left: 0px;;
+}
+
+.right {
+    right: 0px;
+    float: right;
+}
+
+.online {
+    background-color: limegreen;
+    border-radius: 50%;
+}

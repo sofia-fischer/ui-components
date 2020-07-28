@@ -1,0 +1,53 @@
+import { registerInstance as __stencil_registerInstance, getElement as __stencil_getElement } from "@stencil/core";
+import { h } from "@stencil/core";
+export const LvlMention = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    render() {
+        this.mention = {
+            backgroundColorGradientEnd: "#cccccc",
+            backgroundColorGradientStart: "#ffffff",
+            iconURL: "https://cdn.levels.one/uploads/images/squared/media/2019/04/30/f5dac1606b6d11e99cb24954302eff43.png",
+            id: 44694,
+            linkedID: 7571,
+            object: "MentionResource",
+            replaceWith: "@New Location Suggestions",
+            string: "@addtolevels",
+            textColor: "#488aff",
+            type: "HASHTAG",
+            uuid: "2991f4f0-baee-11ea-abf8-8da229846497",
+        };
+        this.mentionElement.style.setProperty('backgroundColorGradientEnd', this.mention.backgroundColorGradientEnd);
+        this.mentionElement.style.setProperty('backgroundColorGradientStart', this.mention.backgroundColorGradientStart);
+        this.mentionElement.style.setProperty('textColor', this.mention.textColor);
+        console.log(this.mention);
+        return h("span", null, h("a", { class: "prefixIcon" }), h("img", { class: "icon", src: this.mention.iconURL }), h("a", { class: "text" }, this.mention.replaceWith), h("a", { class: "suffixIcon" }));
+    }
+    getTitle() {
+        if (!!this.mention || this.mention.deleted_at) {
+            return 'Deleted User';
+        }
+        const possibleAttributes = [
+            'name',
+            'realname',
+            'Realname',
+            'realName',
+            'nickname',
+            'Login',
+        ];
+        const possibleAttribute = possibleAttributes.find(attribute => !!this.mention[attribute]);
+        if (possibleAttribute) {
+            return this.mention[possibleAttribute];
+        }
+        return 'Deleted User';
+    }
+    getText() {
+        if (this.mention && this.mention.text) {
+            return this.mention.text;
+        }
+        return null;
+    }
+    get mentionElement() { return __stencil_getElement(this); }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:lvl-mention"; }
+};

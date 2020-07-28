@@ -1,0 +1,11 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from "@stencil/core";
+export const LvlAvatar = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    render() {
+        return h("div", { class: "avatar-container" }, h("img", { class: "avatar", src: "https://i.pinimg.com/originals/c7/33/34/c73334b38e58406b1404c579a41eae64.jpg" }), h("img", { class: "icon top left", src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-185/12-avatar.128x.png" }), h("img", { class: "icon top right", src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-185/12-avatar.128x.png" }), h("img", { class: "icon bottom left", src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-185/12-avatar.128x.png" }), h("img", { class: "icon bottom right", src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-185/12-avatar.128x.png" }), h("div", { class: "icon top right online" }));
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:avatar-component"; }
+};

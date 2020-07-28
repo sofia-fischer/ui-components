@@ -1,0 +1,44 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from "@stencil/core";
+import { format } from '../../utils/utils';
+export const MyComponent = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    getText() {
+        return format(this.first, this.middle, this.last);
+    }
+    render() {
+        return h("div", { class: "avatar-container" }, h("img", { class: "avatar", src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-185/12-avatar.128x.png" }), this.topRightStatus
+            ? h("p", null, "Hello ", this.name)
+            : h("p", null, "Hello World"), h("img", { class: "status-item", style: { left: '2px', top: '2px' }, src: "https://cdn.imgbin.com/25/11/15/imgbin-symbol-sphere-green-cute-ball-go-green-and-white-check-logo-9sJaWngA6eLXNHgqEKx1dSm6K.jpg" }), h("img", { class: "status-item", style: { left: '2px', bottom: '2px' }, src: "https://cdn.imgbin.com/25/11/15/imgbin-symbol-sphere-green-cute-ball-go-green-and-white-check-logo-9sJaWngA6eLXNHgqEKx1dSm6K.jpg" }), h("img", { class: "status-item", style: { right: '2px', top: '2px' }, src: "https://cdn.imgbin.com/25/11/15/imgbin-symbol-sphere-green-cute-ball-go-green-and-white-check-logo-9sJaWngA6eLXNHgqEKx1dSm6K.jpg" }), h("img", { class: "status-item", style: { right: '2px', bottom: '2px' }, src: "https://cdn.imgbin.com/25/11/15/imgbin-symbol-sphere-green-cute-ball-go-green-and-white-check-logo-9sJaWngA6eLXNHgqEKx1dSm6K.jpg" }));
+    }
+    getStatus(statusString, position) {
+        let style = {};
+        switch (position) {
+            case 'topRight':
+                style = { left: '2px', top: '2px' };
+                break;
+            case 'bottomRight':
+                style = { left: '2px', bottom: '2px' };
+                break;
+            case 'bottomLeft':
+                style = { right: '2px', top: '2px' };
+                break;
+            case 'topLeft':
+                style = { right: '2px', bottom: '2px' };
+                break;
+        }
+        if (!statusString) {
+            style[displa];
+            return;
+                >
+            ;
+        }
+        if (statusString.startsWith('#')) {
+            h("img", { class: "status-dot", style: style, src: "https://cdn.imgbin.com/25/11/15/imgbin-symbol-sphere-green-cute-ball-go-green-and-white-check-logo-9sJaWngA6eLXNHgqEKx1dSm6K.jpg" });
+        }
+        h("img", { class: "status-item", style: style, src: statusString });
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:my-component"; }
+};

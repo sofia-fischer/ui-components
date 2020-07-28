@@ -1,0 +1,47 @@
+.avatar {
+    border-radius: 50%;
+    display: block;
+
+    position: relative;
+    width: 100%;
+    padding-bottom : 50%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover; /* you change this to "contain" if you don't want the images to be cropped */
+}
+
+.avatar-container {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.avatar-container:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.icon {
+    width: 40%;
+    height: 20%;
+    position: absolute;
+}
+
+.top {
+    top: 0px;;
+}
+
+.bottom {
+    bottom: 50%;
+}
+
+.left {
+    left: 0px;;
+}
+
+.right {
+    right: 0px;
+    float: right;
+}

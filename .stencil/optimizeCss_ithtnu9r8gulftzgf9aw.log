@@ -1,0 +1,22 @@
+.avatar {
+    width: 100%;
+    border-radius: 50%;
+    display: block;
+    padding-bottom: 100%;
+}
+
+.flex-status-box {
+    top: 0px;
+    display: -ms-flexbox;
+    display: flex;
+    position: absolute;
+    width: 100%;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.flex-status-item {
+    max-width: 50%;
+}

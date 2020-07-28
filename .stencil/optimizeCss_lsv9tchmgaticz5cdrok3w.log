@@ -1,0 +1,46 @@
+.mention {
+    display: inline-block;
+    border-radius: 3px;
+    text-decoration: none;
+    position: relative;
+    font-family: sans-serif;
+    font-weight: 100;
+    padding: 3px;
+    padding-right: 7px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.icon {
+    width: 15px;
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    left: 5px;
+}
+
+.prefixIcon {
+    max-height: 15px;
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    left: 5px;
+}
+
+.suffixIcon {
+    width: 15px;
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    right: 5px;
+}
+
+.text {
+    text-overflow: ellipsis;
+    padding-left: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    word-break: break-all;
+    max-width: 100%;
+}

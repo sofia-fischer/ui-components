@@ -1,0 +1,37 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from "@stencil/core";
+export const MyComponent = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    render() {
+        return h("div", { class: "avatar-container" }, h("img", { class: "avatar", src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-185/12-avatar.128x.png" }), this.getStatus(this.topRight, 'topRight'), this.getStatus(this.bottomRight, 'bottomRight'), this.getStatus(this.bottomLeft, 'bottomLeft'), this.getStatus(this.topLeft, 'topLeft'));
+    }
+    getStatus(statusString, position) {
+        console.log(statusString, position);
+        if (!statusString) {
+            return (null);
+        }
+        let style = {};
+        switch (position) {
+            case 'topRight':
+                style = { right: '2px', top: '2px' };
+                break;
+            case 'bottomRight':
+                style = { right: '2px', bottom: '2px' };
+                break;
+            case 'bottomLeft':
+                style = { left: '2px', bottom: '2px' };
+                break;
+            case 'topLeft':
+                style = { left: '2px', top: '2px' };
+                break;
+        }
+        if (statusString.startsWith('#')) {
+            style['background-color'] = statusString;
+            return h("div", { class: "status-dot", style: style });
+        }
+        return h("img", { class: "status-item", style: style, src: statusString });
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:my-component"; }
+};

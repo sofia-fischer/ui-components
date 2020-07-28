@@ -1,0 +1,21 @@
+.list-item {
+    max-height:100px; 
+    width:100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+.item-avatar {
+    max-height:100px;
+    max-width:100px;
+}
+
+.item-title {
+    
+}
+
+.item-text {
+    color: darkgray;
+}

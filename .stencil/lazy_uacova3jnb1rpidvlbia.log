@@ -1,0 +1,58 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { getAssetPath, h } from "@stencil/core";
+export const LvlMention = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    render() {
+        this.mention = {
+            backgroundColorGradientEnd: "#cccccc",
+            backgroundColorGradientStart: "#1a2548",
+            iconURL: "https://cdn.levels.one/uploads/images/squared/media/2019/04/30/f5dac1606b6d11e99cb24954302eff43.png",
+            id: 44694,
+            linkedID: 7571,
+            object: "MentionResource",
+            replaceWith: "@New Location Suggestions",
+            string: "@addtolevels",
+            textColor: "#dff5ff",
+            type: "HASHTAG",
+            uuid: "2991f4f0-baee-11ea-abf8-8da229846497",
+        };
+        console.log(this.mention);
+        return h("span", { class: "mention", style: {
+                'background': 'linear-gradient(123deg, ' + this.mention.backgroundColorGradientStart + ', ' + this.mention.backgroundColorGradientEnd + ')',
+            } }, h("img", { class: "prefixIcon", src: this.getPreixIconUrl() }), h("img", { class: "icon", src: this.mention.iconURL }), h("a", { class: "text", style: {
+                'color': this.mention.textColor,
+                'padding-right': this.getSuffixIconUrl() ? '20px' : null,
+            } }, this.mention.replaceWith), h("img", { class: "suffixIcon", src: this.getSuffixIconUrl() }));
+    }
+    getSuffixIconUrl() {
+        if (this.mention.suffixIconURL) {
+            return this.mention.suffixIconURL;
+        }
+        console.log(getAssetPath('assets/crown'));
+        switch (this.mention.suffixIcon) {
+            case "asterisk":
+                return getAssetPath('assets/crown.svg');
+            case "checkmark":
+                return getAssetPath('assets/check-mark.png');
+            case "contacts":
+                return getAssetPath('assets/profiles.png');
+            case "president":
+                return getAssetPath('assets/crown.svg');
+            case "board-member":
+                return getAssetPath('assets/suit.svg');
+        }
+    }
+    getPreixIconUrl() {
+        if (this.mention.prefixIconURL) {
+            return this.mention.prefixIconURL;
+        }
+        switch (this.mention.suffixIcon) {
+            case "guag":
+                return getAssetPath('assets/guag.svg');
+        }
+    }
+    static get assetsDirs() { return ["assets"]; }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:lvl-mention"; }
+};

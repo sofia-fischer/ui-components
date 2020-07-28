@@ -1,0 +1,17 @@
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.status-item {
+    max-width: 50%;
+    max-height: 50%;
+    position: absolute;
+}
+
+.avatar-container {
+    width: 100%;
+    display: block;
+    padding-bottom: 100%;
+}

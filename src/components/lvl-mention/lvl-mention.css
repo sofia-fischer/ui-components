@@ -1,0 +1,39 @@
+
+.mention {
+    border-radius: 3px;
+    text-decoration: none;
+    position: relative;
+    font-family: sans-serif;
+    font-weight: 100;
+    padding: 3px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    width: min-content;
+    max-width: 100%;
+    align-items: center;
+}
+
+.icon {
+    max-width: 20px;
+    max-height: 20px;
+    display: inline-block;
+    padding: 0px 5px 0px 5px;
+}
+
+.icon:empty {
+    padding: 0px;
+}
+
+
+.text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0px 5px 0px 5px;
+
+}

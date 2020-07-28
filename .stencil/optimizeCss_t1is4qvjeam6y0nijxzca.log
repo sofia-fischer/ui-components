@@ -1,0 +1,39 @@
+.list-item {
+    max-height: 100px;
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+.item-center {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+}
+
+.item-avatar {
+    max-height: 100px;
+    max-width: 100px;
+    height: 100%;
+    width: 100%;
+}
+
+.item-title {
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    font-family: 'Verdana';
+    font-size: 2em;
+    min-font-size: 5px;
+}
+
+
+.item-text {
+    color: darkgray;
+}

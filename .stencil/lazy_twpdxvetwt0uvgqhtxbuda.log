@@ -1,0 +1,51 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from "@stencil/core";
+export const LvlListItem = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    render() {
+        this.user = {
+            avatarIconURL: "https://cdn.dev.levels.one/resources/graphics/levels/small/METHUSALEM.180425T0000.png",
+            avatarImageURL: "https://cdn.dev.levels.one/resources/graphics/locations/types/avatars/restaurant.180425T0000.png",
+            followersCount: 1,
+            headline: "Locations",
+            id: 17004,
+            linkedID: 7105,
+            name: "Sofia Restaurant Toronto",
+            nickname: "#SofiaRestaurantToronto",
+            object: "SearchResultResource",
+            object_mode: "NEW_RESOURCE",
+            type: "LOCATION",
+            uuid: "b8e6ce20-3679-11ea-94ec-0d977511155a",
+            online: true,
+        };
+        console.log(this.user);
+        return h("div", { class: "list-item" }, h("lvl-avatar", { user: this.user }), h("div", { class: "item-center" }, h("p", { class: "item-title" }, this.getTitle()), h("p", { class: "item-text" }, this.getText())));
+    }
+    getTitle() {
+        if (!!this.user || this.user.deleted_at) {
+            return 'Deleted User';
+        }
+        const possibleAttributes = [
+            'name',
+            'realname',
+            'Realname',
+            'realName',
+            'nickname',
+            'Login',
+        ];
+        const possibleAttribute = possibleAttributes.find(attribute => !!this.user[attribute]);
+        if (possibleAttribute) {
+            return this.user[possibleAttribute];
+        }
+        return 'Deleted User';
+    }
+    getText() {
+        if (this.user && this.user.text) {
+            return this.user.text;
+        }
+        return null;
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:lvl-list-item"; }
+};

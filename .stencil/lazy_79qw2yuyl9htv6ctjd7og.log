@@ -1,0 +1,56 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from "@stencil/core";
+export const LvlAvatar = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    render() {
+        console.log(this.user);
+        return h("avatar-component", { avatar: this.getAvatar(), bottomRight: this.getIcon(), topLeft: this.getGuidance(), online: this.getOnline() });
+    }
+    getAvatar() {
+        if (!this.user) {
+            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+        }
+        const possibleAttributes = [
+            'avatarImageURLThumb',
+            'avatarImageUrlThumb',
+            'profileImageUrl',
+            'imageUrl',
+            'avatarUrl',
+        ];
+        possibleAttributes.find(attribute => !!this.user[attribute]);
+        if (possibleAttributes) {
+            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+        }
+        return 'Deleted User';
+    }
+    getOnline() {
+        if (!this.user)
+            return false;
+        return !!this.user.online;
+    }
+    getGuidance() {
+        if (!this.user)
+            return false;
+        return this.user.icon;
+    }
+    getIcon() {
+        if (!this.user) {
+            return 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+        }
+        const possibleAttributes = [
+            'iconUrl',
+            'avatarIconURL',
+            'profileIconUrl',
+            'profileBadgeImageUrl',
+            'profileBadgeUrl',
+        ];
+        const possibleAttribute = possibleAttributes.find(attribute => !!this.user[attribute]);
+        if (possibleAttribute) {
+            return this.user[possibleAttribute];
+        }
+        return null;
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:lvl-avatar"; }
+};

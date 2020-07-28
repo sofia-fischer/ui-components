@@ -1,0 +1,6 @@
+.mention {
+    display: inline-block;
+    border-radius: 3px;
+    text-decoration: none;
+    position: relative;
+}

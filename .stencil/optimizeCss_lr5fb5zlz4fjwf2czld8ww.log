@@ -1,0 +1,18 @@
+.mention {
+    display: inline-block;
+    border-radius: 3px;
+    text-decoration: none;
+    position: relative;
+}
+
+.icon {
+    width: 15px;
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+
+.text {
+    padding-left: 20px;
+}
