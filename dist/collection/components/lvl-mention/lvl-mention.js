@@ -16,7 +16,7 @@ export class LvlMention {
             suffixIcon: "guag",
             uuid: "2991f4f0-baee-11ea-abf8-8da229846497",
         };
-        return h("span", { class: "mention", style: { 'background': 'linear-gradient(123deg, ' + this.mention.backgroundColorGradientStart + ', ' + this.mention.backgroundColorGradientEnd + ')', }, onClick: () => this.onClick.emit(new ClickEvent(this.mention.id, 'MENTION')) },
+        return h("span", { class: "mention", style: { 'background': 'linear-gradient(123deg, ' + this.mention.backgroundColorGradientStart + ', ' + this.mention.backgroundColorGradientEnd + ')', }, onClick: () => this.clickEvent.emit(new ClickEvent(this.mention.id, 'MENTION')) },
             h("img", { class: "icon", src: this.getPreixIconUrl() }),
             h("img", { class: "icon", src: this.mention.iconURL }),
             h("a", { class: "text", style: { 'color': this.mention.textColor, } }, this.mention.replaceWith),
@@ -78,8 +78,8 @@ export class LvlMention {
         }
     }; }
     static get events() { return [{
-            "method": "onClick",
-            "name": "onClick",
+            "method": "clickEvent",
+            "name": "clickEvent",
             "bubbles": true,
             "cancelable": true,
             "composed": true,

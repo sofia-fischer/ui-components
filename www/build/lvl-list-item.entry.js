@@ -4,7 +4,7 @@ import { C as ClickEvent } from './clickEvent-f7110283.js';
 const LvlListItem = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        this.onClick = createEvent(this, "onClick", 7);
+        this.clickEvent = createEvent(this, "clickEvent", 7);
     }
     render() {
         this.user = {
@@ -23,7 +23,7 @@ const LvlListItem = class {
             online: true,
             text: 'You are doing great!'
         };
-        return h("div", { class: "list-item", onClick: () => this.onClick.emit(new ClickEvent(this.user.id, 'LISTITEM')) }, h("lvl-avatar", { class: "item-avatar", user: this.user }), h("div", { class: "item-center" }, h("h1", { class: "item-title" }, this.getTitle()), h("h6", { class: "item-text" }, this.getText())));
+        return h("div", { class: "list-item", onClick: () => this.clickEvent.emit(new ClickEvent(this.user.id, 'LISTITEM')) }, h("lvl-avatar", { class: "item-avatar", user: this.user }), h("div", { class: "item-center" }, h("h1", { class: "item-title" }, this.getTitle()), h("h6", { class: "item-text" }, this.getText())));
     }
     getTitle() {
         if (!!this.user || this.user.deleted_at) {

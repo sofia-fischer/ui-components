@@ -11,7 +11,8 @@ import {ClickEvent} from "../click-event/clickEvent";
 export class LvlMention
 {
     @Prop() mention: any
-    @Event() onClick: EventEmitter<ClickEvent>
+
+    @Event() clickEvent: EventEmitter<ClickEvent>
 
     render()
     {
@@ -32,7 +33,7 @@ export class LvlMention
 
         return <span class="mention"
                      style={{'background': 'linear-gradient(123deg, ' + this.mention.backgroundColorGradientStart + ', ' + this.mention.backgroundColorGradientEnd + ')',}}
-                     onClick={() => this.onClick.emit(new ClickEvent(this.mention.id, 'MENTION'))}>
+                     onClick={() => this.clickEvent.emit(new ClickEvent(this.mention.id, 'MENTION'))}>
             
             <img class="icon"
                  src={this.getPreixIconUrl()}/>

@@ -4,15 +4,18 @@ import { C as ClickEvent } from './clickEvent-f7110283.js';
 const LvlAvatar = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        this.onClick = createEvent(this, "onClick", 7);
+        this.clickEvent = createEvent(this, "clickEvent", 7);
     }
     render() {
         console.log(this.user);
-        return h("avatar-component", { avatar: this.getAvatar(), bottomRight: this.getIcon(), topLeft: this.getGuidance(), online: this.getOnline(), onClick: () => this.onClick.emit(new ClickEvent(this.user.id, 'AVATAR')) });
+        return h("avatar-component", { avatar: this.getAvatar(), bottomRight: this.getIcon(), topLeft: this.getGuidance(), online: this.getOnline(), onClick: () => this.clickEvent.emit(new ClickEvent(this.user.id, 'AVATAR')) });
     }
     getAvatar() {
         if (!this.user) {
             return getAssetPath('assets/profiles.png');
+        }
+        if (this.format) {
+            return this.user[this.format.name];
         }
         const possibleAttributes = [
             'avatarImageURLThumb',
@@ -30,16 +33,25 @@ const LvlAvatar = class {
     getOnline() {
         if (!this.user)
             return false;
+        if (this.format) {
+            return this.user[this.format.online];
+        }
         return !!this.user.online;
     }
     getGuidance() {
         if (!this.user)
             return false;
+        if (this.format) {
+            return this.user[this.format.guidance];
+        }
         return this.user.icon;
     }
     getIcon() {
         if (!this.user) {
             return getAssetPath('assets/profiles.png');
+        }
+        if (this.format) {
+            return this.user[this.format.icon];
         }
         const possibleAttributes = [
             'iconUrl',

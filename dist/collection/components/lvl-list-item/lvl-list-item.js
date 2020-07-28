@@ -18,7 +18,7 @@ export class LvlListItem {
             online: true,
             text: 'You are doing great!'
         };
-        return h("div", { class: "list-item", onClick: () => this.onClick.emit(new ClickEvent(this.user.id, 'LISTITEM')) },
+        return h("div", { class: "list-item", onClick: () => this.clickEvent.emit(new ClickEvent(this.user.id, 'LISTITEM')) },
             h("lvl-avatar", { class: "item-avatar", user: this.user }),
             h("div", { class: "item-center" },
                 h("h1", { class: "item-title" }, this.getTitle()),
@@ -76,8 +76,8 @@ export class LvlListItem {
         }
     }; }
     static get events() { return [{
-            "method": "onClick",
-            "name": "onClick",
+            "method": "clickEvent",
+            "name": "clickEvent",
             "bubbles": true,
             "cancelable": true,
             "composed": true,

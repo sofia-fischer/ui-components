@@ -1,8 +1,8 @@
 {
   "entries": [
-    "components/lvl-avatar/lvl-avatar.js",
-    "components/lvl-mention/lvl-mention.js",
     "components/lvl-list-item/lvl-list-item.js",
+    "components/lvl-mention/lvl-mention.js",
+    "components/lvl-avatar/lvl-avatar.js",
     "components/avatar-component/avatar-component.js"
   ],
   "compiler": {

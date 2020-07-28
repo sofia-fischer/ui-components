@@ -3,11 +3,14 @@ import { ClickEvent } from "../click-event/clickEvent";
 export class LvlAvatar {
     render() {
         console.log(this.user);
-        return h("avatar-component", { avatar: this.getAvatar(), bottomRight: this.getIcon(), topLeft: this.getGuidance(), online: this.getOnline(), onClick: () => this.onClick.emit(new ClickEvent(this.user.id, 'AVATAR')) });
+        return h("avatar-component", { avatar: this.getAvatar(), bottomRight: this.getIcon(), topLeft: this.getGuidance(), online: this.getOnline(), onClick: () => this.clickEvent.emit(new ClickEvent(this.user.id, 'AVATAR')) });
     }
     getAvatar() {
         if (!this.user) {
             return getAssetPath('assets/profiles.png');
+        }
+        if (this.format) {
+            return this.user[this.format.name];
         }
         const possibleAttributes = [
             'avatarImageURLThumb',
@@ -25,16 +28,25 @@ export class LvlAvatar {
     getOnline() {
         if (!this.user)
             return false;
+        if (this.format) {
+            return this.user[this.format.online];
+        }
         return !!this.user.online;
     }
     getGuidance() {
         if (!this.user)
             return false;
+        if (this.format) {
+            return this.user[this.format.guidance];
+        }
         return this.user.icon;
     }
     getIcon() {
         if (!this.user) {
             return getAssetPath('assets/profiles.png');
+        }
+        if (this.format) {
+            return this.user[this.format.icon];
         }
         const possibleAttributes = [
             'iconUrl',
@@ -74,11 +86,26 @@ export class LvlAvatar {
             },
             "attribute": "user",
             "reflect": false
+        },
+        "format": {
+            "type": "unknown",
+            "mutable": false,
+            "complexType": {
+                "original": "{ name: string, icon: string, online: string, id: string, guidance: string }",
+                "resolved": "{ name: string; icon: string; online: string; id: string; guidance: string; }",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            }
         }
     }; }
     static get events() { return [{
-            "method": "onClick",
-            "name": "onClick",
+            "method": "clickEvent",
+            "name": "clickEvent",
             "bubbles": true,
             "cancelable": true,
             "composed": true,

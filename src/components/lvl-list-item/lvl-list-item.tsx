@@ -9,7 +9,8 @@ import {ClickEvent} from "../click-event/clickEvent";
 export class LvlListItem
 {
     @Prop() user: any
-    @Event() onClick: EventEmitter<ClickEvent>
+
+    @Event() clickEvent: EventEmitter<ClickEvent>
 
     render()
     {
@@ -31,7 +32,7 @@ export class LvlListItem
         }
 
         return <div class="list-item"
-                    onClick={() => this.onClick.emit(new ClickEvent(this.user.id, 'LISTITEM'))}>
+                    onClick={() => this.clickEvent.emit(new ClickEvent(this.user.id, 'LISTITEM'))}>
             <lvl-avatar class="item-avatar" user={this.user}></lvl-avatar>
             <div class="item-center">
                 <h1 class="item-title">{this.getTitle()}</h1>

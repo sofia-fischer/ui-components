@@ -9,7 +9,9 @@ import {ClickEvent} from "../click-event/clickEvent";
 export class LvlAvatar
 {
     @Prop() user: any
-    @Event() onClick: EventEmitter<ClickEvent>
+    @Prop() format: { name: string, icon: string, online: string, id: string, guidance: string }
+
+    @Event() clickEvent: EventEmitter<ClickEvent>
 
     render()
     {
@@ -19,7 +21,7 @@ export class LvlAvatar
             bottomRight={this.getIcon()}
             topLeft={this.getGuidance()}
             online={this.getOnline()}
-            onClick={() => this.onClick.emit(new ClickEvent(this.user.id, 'AVATAR'))}
+            onClick={() => this.clickEvent.emit(new ClickEvent(this.user.id, 'AVATAR'))}
         ></avatar-component>;
     }
 
@@ -27,6 +29,10 @@ export class LvlAvatar
     {
         if (!this.user) {
             return getAssetPath('assets/profiles.png')
+        }
+
+        if (this.format) {
+            return this.user[this.format.name]
         }
 
         const possibleAttributes =
@@ -51,12 +57,20 @@ export class LvlAvatar
     {
         if (!this.user) return false
 
+        if (this.format) {
+            return this.user[this.format.online]
+        }
+
         return !!this.user.online
     }
 
     private getGuidance()
     {
         if (!this.user) return false
+
+        if (this.format) {
+            return this.user[this.format.guidance]
+        }
 
         return this.user.icon
     }
@@ -65,6 +79,10 @@ export class LvlAvatar
     {
         if (!this.user) {
             return getAssetPath('assets/profiles.png')
+        }
+
+        if (this.format) {
+            return this.user[this.format.icon]
         }
 
         const possibleAttributes =

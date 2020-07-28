@@ -21,6 +21,7 @@ export namespace Components {
     'topRight': string;
   }
   interface LvlAvatar {
+    'format': { name: string, icon: string, online: string, id: string, guidance: string };
     'user': any;
   }
   interface LvlListItem {
@@ -75,16 +76,17 @@ declare namespace LocalJSX {
     'topRight'?: string;
   }
   interface LvlAvatar {
-    'onOnClick'?: (event: CustomEvent<ClickEvent>) => void;
+    'format'?: { name: string, icon: string, online: string, id: string, guidance: string };
+    'onClickEvent'?: (event: CustomEvent<ClickEvent>) => void;
     'user'?: any;
   }
   interface LvlListItem {
-    'onOnClick'?: (event: CustomEvent<ClickEvent>) => void;
+    'onClickEvent'?: (event: CustomEvent<ClickEvent>) => void;
     'user'?: any;
   }
   interface LvlMention {
     'mention'?: any;
-    'onOnClick'?: (event: CustomEvent<ClickEvent>) => void;
+    'onClickEvent'?: (event: CustomEvent<ClickEvent>) => void;
   }
 
   interface IntrinsicElements {
