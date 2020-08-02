@@ -1,4 +1,4 @@
-import {Component, h, Prop} from '@stencil/core';
+import {Component, getAssetPath, h, Prop} from '@stencil/core';
 
 @Component({
     tag: 'avatar-component',
@@ -7,9 +7,9 @@ import {Component, h, Prop} from '@stencil/core';
 })
 export class AvatarComponent
 {
-    @Prop() avatar: string = 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+    @Prop() avatar: string = getAssetPath('assets/profiles.png');
     @Prop() topRight: string;
-    @Prop() bottomRight: string = 'https://cdn.levels.one/resources/graphics/avatars/bright-hashtag-lg.180425T0000.png';
+    @Prop() bottomRight: string = getAssetPath('assets/profiles.png');
     @Prop() bottomLeft: string = null;
     @Prop() topLeft: string;
     @Prop() online: boolean;

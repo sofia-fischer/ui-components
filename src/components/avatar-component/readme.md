@@ -1,19 +1,16 @@
-# my-component
 
 
+## Avatar Component
 
-<!-- Auto Generated Below -->
+The Avatar Component provides a basic mobile responsive Avatar, that uses the following properties: 
 
+```bash
+    @Prop() avatar: string = getAssetPath('assets/profiles.png');
+    @Prop() topRight: string;
+    @Prop() bottomRight: string = getAssetPath('assets/profiles.png');
+    @Prop() bottomLeft: string = null;
+    @Prop() topLeft: string;
+    @Prop() online: boolean;
+```
 
-## Properties
-
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first name  | `string` | `undefined` |
-| `last`   | `last`    | The last name   | `string` | `undefined` |
-| `middle` | `middle`  | The middle name | `string` | `undefined` |
-
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+The Component is fully responsive. 

@@ -9,6 +9,7 @@ import {ClickEvent} from "../click-event/clickEvent";
 export class LvlListItem
 {
     @Prop() user: any
+    @Prop() format: { name: string, icon: string, text: string, online: string, id: string, guidance: string }
 
     @Event() clickEvent: EventEmitter<ClickEvent>
 
@@ -33,7 +34,7 @@ export class LvlListItem
 
         return <div class="list-item"
                     onClick={() => this.clickEvent.emit(new ClickEvent(this.user.id, 'LISTITEM'))}>
-            <lvl-avatar class="item-avatar" user={this.user}></lvl-avatar>
+            <lvl-avatar class="item-avatar" user={this.user} format={this.format}></lvl-avatar>
             <div class="item-center">
                 <h1 class="item-title">{this.getTitle()}</h1>
                 <h6 class="item-text">{this.getText()}</h6>
@@ -43,6 +44,10 @@ export class LvlListItem
 
     private getTitle()
     {
+        if (this.format) {
+            return this.user[this.format.name]
+        }
+
         if (!!this.user || this.user.deleted_at) {
             return 'Deleted User'
         }
@@ -68,6 +73,10 @@ export class LvlListItem
 
     private getText()
     {
+        if (this.format) {
+            return this.user[this.format.text]
+        }
+
         if (this.user && this.user.text) {
             return this.user.text
         }
